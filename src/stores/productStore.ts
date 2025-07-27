@@ -42,7 +42,7 @@ export const useProductStore = create<ProductState>((set, get) => ({
     limit: 10,
     includeDeleted: false,
   },
-  isLoading: false,
+  isLoading: true,
   error: null,
 
   fetchProducts: async (filters?: ProductFilters) => {

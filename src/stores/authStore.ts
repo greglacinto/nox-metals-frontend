@@ -94,28 +94,28 @@ export const useAuthStore = create<AuthState>()(
       },
 
       getCurrentUser: async () => {
-        console.log('🔄 getCurrentUser called');
+        console.log('getCurrentUser called');
         
         // Skip if no token
         const currentToken = get().token;
         if (!currentToken) {
-          console.log('🔄 No token, skipping getCurrentUser');
+          console.log('No token, skipping getCurrentUser');
           set({ isLoading: false });
           return;
         }
 
-        console.log('🔄 Making API call to /auth/me');
+        console.log('Making API call to /auth/me');
         set({ isLoading: true });
         try {
           const response = await apiClient.getCurrentUser();
-          console.log('🔄 getCurrentUser success:', response.data.user.email);
+          console.log('getCurrentUser success:', response.data.user.email);
           set({
             user: response.data.user,
             isLoading: false,
             error: null,
           });
         } catch (error: unknown) {
-          console.log('🔄 getCurrentUser failed:', error instanceof Error ? error.message : 'Unknown error');
+          console.log('getCurrentUser failed:', error instanceof Error ? error.message : 'Unknown error');
           // Don't clear localStorage or log out user on getCurrentUser failure
           // Just set loading to false and keep existing user state
           set({

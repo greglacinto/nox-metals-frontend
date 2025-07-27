@@ -53,9 +53,7 @@ const ProductList: React.FC<ProductListProps> = ({
     );
   }
 
-  console.log("products", products);
-
-  if (products.length === 0) {
+  if (products.length === 0 && !isLoading) {
     return (
       <div className="text-center py-8 sm:py-12">
         <Package className="mx-auto h-12 w-12 text-gray-400" />

@@ -26,10 +26,10 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requireAdmin 
       return;
     }
 
-    console.log('🔒 ProtectedRoute: token =', !!token, 'user =', !!user);
+    console.log('ProtectedRoute: token =', !!token, 'user =', !!user);
     
     if (!token) {
-      console.log('🔒 No token, redirecting to auth');
+      console.log('No token, redirecting to auth');
       router.push('/auth');
       return;
     }
@@ -38,18 +38,18 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requireAdmin 
     // and the user data isn't available in localStorage
     if (!user) {
       const userStr = localStorage.getItem('user');
-      console.log('🔒 No user in state, localStorage has user =', !!userStr);
+      console.log('No user in state, localStorage has user =', !!userStr);
       
       if (!userStr) {
         // No user data in localStorage, try to fetch it
-        console.log('🔒 Calling getCurrentUser...');
+        console.log('Calling getCurrentUser...');
         getCurrentUser().catch((error) => {
-          console.log('🔒 getCurrentUser failed:', error);
+          console.log('getCurrentUser failed:', error);
           // If getCurrentUser fails, redirect to auth
           router.push('/auth');
         });
       } else {
-        console.log('🔒 User data exists in localStorage, should be loaded by initialize()');
+        console.log('User data exists in localStorage, should be loaded by initialize()');
       }
       // If userStr exists, the initialize() should have loaded it
     }

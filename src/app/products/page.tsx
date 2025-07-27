@@ -40,7 +40,7 @@ const ProductsPage = () => {
       hasInitialized.current = true;
       fetchProducts({ ...filters, includeDeleted: showDeleted });
     }
-  }, [user]);
+  }, [user, filters, showDeleted, fetchProducts]);
 
   // Handle showDeleted toggle changes
   useEffect(() => {

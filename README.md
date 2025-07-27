@@ -1,12 +1,21 @@
 # Nox Metals Frontend
 
-A modern Next.js 14 frontend application for the Nox Metals Product Management System.
+A modern Next.js 14 frontend application for the Nox Metals Product Management System. The live system can be access here [https://nox-metals-frontend.vercel.ap](https://nox-metals-frontend.vercel.ap)
+
+# Project Overview
+- Implement a login page that allows users to authenticate &#x2713;
+- Users should be able to sign up and log in &#x2713;
+- Securely handle authentication on the backend &#x2713;
+- Add role-based access control (e.g., “Admin”, “User”) &#x2713;
+- Only Admins can add/delete products &#x2713;
+- Regular Users can only view products &#x2713;
+
 
 ## 🚀 Features
 
 - **Authentication & Authorization**: Login/signup with role-based access control
 - **Product Management**: View, create, edit, and delete products (Admin only)
-- **Modern UI**: Built with Tailwind CSS and Headless UI
+- **Modern UI**: Built with Tailwind CSS
 - **State Management**: Zustand for efficient state management
 - **Type Safety**: Full TypeScript support
 - **Form Validation**: React Hook Form with Zod validation
