@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nox Metals Frontend
 
-## Getting Started
+A modern Next.js 14 frontend application for the Nox Metals Product Management System.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Authentication & Authorization**: Login/signup with role-based access control
+- **Product Management**: View, create, edit, and delete products (Admin only)
+- **Modern UI**: Built with Tailwind CSS and Headless UI
+- **State Management**: Zustand for efficient state management
+- **Type Safety**: Full TypeScript support
+- **Form Validation**: React Hook Form with Zod validation
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: Zustand
+- **Forms**: React Hook Form + Zod
+- **HTTP Client**: Axios
+- **Icons**: Lucide React
+- **UI Components**: Headless UI
+
+## 📦 Installation
+
+1. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
+2. Set up environment variables:
+   ```bash
+   cp .env.local.example .env.local
+   ```
+   
+   Update `.env.local` with your configuration:
+   ```env
+   NEXT_PUBLIC_API_URL=http://localhost:3001/api
+   NEXT_PUBLIC_APP_NAME=Nox Metals
+   NEXT_PUBLIC_APP_VERSION=1.0.0
+   ```
+
+3. Start the development server:
+   ```bash
+   pnpm dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🏗️ Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── auth/              # Authentication pages
+│   ├── dashboard/         # Dashboard page
+│   └── layout.tsx         # Root layout
+├── components/            # React components
+│   ├── auth/             # Authentication components
+│   ├── products/         # Product-related components
+│   └── ui/               # Reusable UI components
+├── lib/                  # Utility libraries
+│   ├── api.ts           # API client
+│   └── utils.ts         # Utility functions
+├── stores/              # Zustand stores
+│   ├── authStore.ts     # Authentication state
+│   └── productStore.ts  # Product state
+└── types/               # TypeScript type definitions
+    ├── auth.ts          # Authentication types
+    └── product.ts       # Product types
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔐 Authentication
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The application supports two user roles:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **User**: Can view products only
+- **Admin**: Can view, create, edit, and delete products
 
-## Learn More
+### Default Admin Account
 
-To learn more about Next.js, take a look at the following resources:
+Use the default admin account created by the backend:
+- Email: `admin@noxmetals.com`
+- Password: `admin123`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 UI Components
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Button
+```tsx
+import Button from '@/components/ui/Button';
 
-## Deploy on Vercel
+<Button variant="primary" size="md" loading={false}>
+  Click me
+</Button>
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Input
+```tsx
+import Input from '@/components/ui/Input';
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<Input 
+  label="Email" 
+  type="email" 
+  placeholder="Enter email"
+  error={errors.email?.message}
+/>
+```
+
+## 📱 Available Scripts
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm lint` - Run ESLint
+
+## 🔗 API Integration
+
+The frontend communicates with the backend API through the `apiClient` in `src/lib/api.ts`. All API calls include:
+
+- Automatic token management
+- Error handling
+- Request/response interceptors
+- Type-safe responses
+
+## 🚀 Deployment
+
+1. Build the application:
+   ```bash
+   pnpm build
+   ```
+
+2. Start the production server:
+   ```bash
+   pnpm start
+   ```
+
